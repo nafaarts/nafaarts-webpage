@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nafaarts - Digital Product Services
+    </title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <!-- hero -->
+    <div class="gradient">
+        <section id="hero">
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <img src="./img/Nafaarts_logo.png" height="100" class="d-inline-block align-top m-0" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#">Developer</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#">Service</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="#">Projects</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <button class="btn btn-sm rounded-pill btn-warning">
+                                <a class="nav-link text-dark" href="#">Client
+                                    Area</a>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- akhir navbar -->
+
+            <!-- content -->
+            <div class="content" data-aos="fade-up">
+                <h2>Hey, you are in our space.. <br> Lets do <b>something</b>!</h2>
+                <hr style="border: 1px solid #fff; width: 300px;">
+                <button class="btn btn-outline-light mt-3 rounded-pill">let's discuss</button>
+            </div>
+            <!-- akhir content -->
+
+            <script>
+                (function () {
+                    document.addEventListener("mousemove", parallax);
+                    const elem = document.querySelector("#hero");
+
+                    function parallax(e) {
+                        let _w = window.innerWidth / 2;
+                        let _h = window.innerHeight / 2;
+                        let _mouseX = e.clientX;
+                        let _mouseY = e.clientY;
+                        console.log(e.clientX);
+                        console.log(e.clientY);
+                        let _depth1 = `${50 - (_mouseX - _w) * 0.01}% ${50 - (_mouseY - _h) * 0.01}%`;
+                        let _depth2 = `${50 - (_mouseX - _w) * 0.03}% ${50 - (_mouseY - _h) * 0.03}%`;
+                        let _depth3 = `${50 - (_mouseX - _w) * 0.06}% ${50 - (_mouseY - _h) * 0.06}%`;
+                        let x = `${_depth3}, ${_depth2}, ${_depth1}`;
+                        console.log(x);
+                        elem.style.backgroundPosition = x;
+                    }
+
+                })();
+            </script>
+
+        </section>
+    </div>
+    <!-- akhir hero -->
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-down" data-aos-delay="300">
+                    <img src="./img/about.svg">
+                </div>
+                <div class="col-lg-6 about" data-aos="fade-down" data-aos-delay="400">
+                    <h3 class="mb-3"><b>About</b> Us</h3>
+                    <p>Nafaarts are a small company based in Banda Aceh, Aceh<br>we make projects for several
+                        organizations, companies and schools<br>we make website, mobile and desktop
+                        applications<br>and
+                        also
+                        we are engaged in graphic design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="text-center" data-aos="fade-down" data-aos-delay="500">
+                <h3><b>Services</b></h3>
+                <hr style="width: 10%;">
+                <p>we will make your Awesome ..</p>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="card service" data-aos="flip-left" data-aos-delay="600">
+                        <div class="icon text-white" style="background-color: #E74C3C;">
+                            <i class="fas fa-globe fa-6x"></i>
+                        </div>
+                        <h2><b>Web Development</b></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                        <hr style="border: 5px solid #E74C3C; width: 40%;">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service" data-aos="flip-left" data-aos-delay="700">
+                        <div class="icon text-white" style="background-color: #F39C12;">
+                            <i class="ml-2 fas fa-mobile-alt fa-6x"></i>
+                        </div>
+                        <h2><b>Mobile Application</b></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                        <hr style="border: 5px solid #F39C12; width: 40%;">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service" data-aos="flip-left" data-aos-delay="800">
+                        <div class="icon text-white" style="background-color: #122639;">
+                            <i class="fas fa-pen-nib fa-6x"></i>
+                        </div>
+                        <h2><b>UI & UX<br>Design</b></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</p>
+                        <hr style="border: 5px solid #122639; width: 40%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="banner">
+        <!-- <div class="container"> -->
+        <div class="banner d-flex justify-content-center" data-aos="flip-down" data-aos-delay="500">
+            <div class="text-center text-white align-self-center">
+                <h1><b>Need our service ?</b></h1>
+                <p>we will give the best for you</p>
+                <button class="btn btn-outline-light mt-3 rounded-pill">Hire Us</button>
+            </div>
+        </div>
+        <!-- </div> -->
+
+    </section>
+
+    <section id="testimonial">
+        <div class="container">
+            <div id="testimonials" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#testimonials" data-slide-to="0" class="active">
+                    <li data-target="#testimonials" data-slide-to="1">
+                    <li data-target="#testimonials" data-slide-to="2">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="text-center testimonial-item">
+                            <div class="photo rounded-circle mx-auto mb-4"
+                                style="background-image: url(https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
+                            </div>
+                            <h5><b>Husni</b></h5>
+                            <p>Chief Executive BKK</p>
+                            <h4 class="mt-2"><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</q>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="text-center testimonial-item">
+                            <div class="photo rounded-circle mx-auto mb-4"
+                                style="background-image: url(https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
+                            </div>
+                            <h5><b>Husni</b></h5>
+                            <p>Chief Executive BKK</p>
+                            <h4 class="mt-2"><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</q>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="text-center testimonial-item">
+                            <div class="photo rounded-circle mx-auto mb-4"
+                                style="background-image: url(https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
+                            </div>
+                            <h5><b>Husni</b></h5>
+                            <p>Chief Executive BKK</p>
+                            <h4 class="mt-2"><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</q>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/bkk.png" data-aos="fade-up" data-aos-delay="500">
+                </div>
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/smk2.png" data-aos="fade-up" data-aos-delay="600">
+                </div>
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/jkrevi.png" data-aos="fade-up" data-aos-delay="700">
+                </div>
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/muhammadiyah-logo.png" data-aos="fade-up" data-aos-delay="800">
+                </div>
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/muhammadiyah.png" data-aos="fade-up" data-aos-delay="900">
+                </div>
+                <div class="col mb-2 mr-2 ml-2 text-center">
+                    <img src="img/yakesma.png" data-aos="fade-up" data-aos-delay="1000">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="developers">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 mx-auto mx-1 my-2 text-center developer" data-aos="fade-left"
+                    data-aos-delay="1000">
+                    <div class="developer-photo rounded-circle mx-auto mb-4"
+                        style="background-image: url(https://instagram.fkno3-1.fna.fbcdn.net/v/t51.2885-15/e35/70934609_768216203648243_127341879604340752_n.jpg?_nc_ht=instagram.fkno3-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pB1NOAyb1UYAX_5hcJD&_nc_tp=18&oh=dc96d6de47327e013e0d986724391f8e&oe=5F93B979);">
+                        <div class="developer-social-media">
+                            <ul>
+                                <li><a href=""><i class="far fa-paper-plane"></i></a></li>
+                                <li><a href=""><i class="fab fa-fw fa-instagram"></i></a></li>
+                                <li><a href=""><i class="far fa-fw fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <small>Back-end Developer</small>
+                    <p><b>Muhammad Naufal Alfadhil</b></p>
+                </div>
+                <div class="col-md-2 mx-auto mx-1 my-2 text-center developer" data-aos="fade-left"
+                    data-aos-delay="1100">
+                    <div class="developer-photo rounded-circle mx-auto mb-4">
+                        <div class="developer-social-media">
+                            <ul>
+                                <li><a href=""><i class="far fa-paper-plane"></i></a></li>
+                                <li><a href=""><i class="fab fa-fw fa-instagram"></i></a></li>
+                                <li><a href=""><i class="far fa-fw fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <small>Front-end Developer</small>
+                    <p><b>Reza Fahlevi</b></p>
+                </div>
+                <div class="col-md-2 mx-auto mx-1 my-2 text-center developer" data-aos="fade-left"
+                    data-aos-delay="1200">
+                    <div class="developer-photo rounded-circle mx-auto mb-4">
+                        <div class="developer-social-media">
+                            <ul>
+                                <li><a href=""><i class="far fa-paper-plane"></i></a></li>
+                                <li><a href=""><i class="fab fa-fw fa-instagram"></i></a></li>
+                                <li><a href=""><i class="far fa-fw fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <small>UI/UX Design</small>
+                    <p><b>Faruq Miqdad</b></p>
+                </div>
+                <div class="col-md-2 mx-auto mx-1 my-2 text-center developer" data-aos="fade-left"
+                    data-aos-delay="1400">
+                    <div class="developer-photo rounded-circle mx-auto mb-4">
+                        <div class="developer-social-media">
+                            <ul>
+                                <li><a href=""><i class="far fa-paper-plane"></i></a></li>
+                                <li><a href=""><i class="fab fa-fw fa-instagram"></i></a></li>
+                                <li><a href=""><i class="far fa-fw fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <small>Graphics Design</small>
+                    <p><b>Nabil Muktar Harahap</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h3 class="mb-3"><b>Contact</b> Us</h3>
+            <div class="row">
+                <div class="col-lg-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7942.472159958118!2d95.3056706229007!3d5.5319571628521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30403a0209034ee9%3A0x753824812ea8a01b!2sGeuceu%20Komp.%2C%20Kec.%20Banda%20Raya%2C%20Kota%20Banda%20Aceh%2C%20Aceh!5e0!3m2!1sid!2sid!4v1600931181817!5m2!1sid!2sid"
+                        width="500" height="344" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0" data-aos="fade-right" data-aos-delay="500"></iframe>
+                </div>
+                <div class="col-lg-6">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                data-aos="fade-top" data-aos-delay="500">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
+                                data-aos="fade-top" data-aos-delay="600">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                                data-aos="fade-top" data-aos-delay="700">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Message"
+                                data-aos="fade-top" data-aos-delay="800"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-aos="fade-top"
+                            data-aos-delay="900">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="./img/Nafaarts_logo.png" alt="">
+                        <p>Nafaarts are a small company based in Banda Aceh, Aceh. we make projects for several
+                            organizations, companies and schools. we make website, mobile and desktop applications. and
+                            also we are engaged in graphic design</p>
+                    </div>
+                    <div class="col-md-2 pt-4 ">
+                        <h5><b>Pelayanan</b></h5>
+                        <ul>
+                            <li>Web Development</li>
+                            <li>UI/UX Design</li>
+                            <li>Mobile Application</li>
+                            <li>Video & Music Production</li>
+                            <li>Advertising</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 p-4">
+                        <h5><b>Lokasi</b></h5>
+                        <p>Jl. Prof. A. Majid Ibrahim, Merduati <br> Kuta Raja, Banda Aceh <br> Aceh 23242</p>
+                    </div>
+                    <div class="col-md-2 pt-4">
+                        <h5><b>Hubungi Kami</b></h5>
+                        <ul>
+                            <li>+62 852 4411 8541</li>
+                            <li>support@nafaarts.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-5" style="height: 44px;">
+                    <div class="float-left mt-2">
+                        <div class="social-media"><i class="fab fa-fw fa-instagram"></i></div>
+                        <div class="social-media"><i class="fab fa-fw fa-github"></i></div>
+                        <div class="social-media"><i class="fab fa-fw fa-linkedin"></i></div>
+                    </div>
+                    <div class="float-right text-right">
+                        <p class="mb-2"><a class="mr-2" href="">Privacy Policy</a> <a href="">Term & Conditions</a></p>
+                        <p class="m-0">Copyright &copy; Nafaarts | 2018 - 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>
