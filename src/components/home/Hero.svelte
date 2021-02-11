@@ -99,7 +99,8 @@
         data-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <i class="fas fa-fw fa-bars" />
       </button>
 
@@ -144,11 +145,7 @@
               style="color: #000 !important">Coding Class</a
             >
           </li>
-          <!-- <li class="nav-item mx-3">
-            <button class="btn btn-sm rounded-pill btn-warning">
-              <a class="nav-link text-dark" href="#">Client Area</a>
-            </button>
-          </li> -->
+
         </ul>
       </div>
     </nav>

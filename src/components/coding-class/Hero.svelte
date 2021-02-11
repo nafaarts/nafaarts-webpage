@@ -18,8 +18,12 @@
         <h1 data-aos="fade-up" data-aos-delay="400">
             <b>Basic PHP <br class="d-md-none" /> Web Development</b>
         </h1>
-        <button data-toggle="modal" data-target="#daftar" data-aos="fade" data-aos-delay="1000" class="btn btn-color mt-3"
-            >Daftar Sekarang</button
+        <button
+            data-toggle="modal"
+            data-target="#daftar"
+            data-aos="fade"
+            data-aos-delay="1000"
+            class="btn btn-color mt-3">Daftar Sekarang</button
         >
     </div>
     <img
