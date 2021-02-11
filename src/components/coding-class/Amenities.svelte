@@ -1,14 +1,14 @@
 <div id="amenities">
-    <h1><b>Fasilitas</b></h1>
+    <h1 data-aos="fade-up" data-aos-delay="400"><b>Fasilitas</b></h1>
     <div class="row">
         <div class="col-md-6">
             <ul class="list-group">
-                <li class="list-group-item">
+                <li data-aos="fade-up" data-aos-delay="500" class="list-group-item">
                     <span class="icon-amenities"
                         ><i class="fas fa-fw fa-fan" /></span
                     > Ruang Full AC
                 </li>
-                <li class="list-group-item">
+                <li data-aos="fade-up" data-aos-delay="600" class="list-group-item">
                     <span class="icon-amenities"
                         ><i class="fas fa-fw fa-book" /></span
                     > Modul Pelatihan
@@ -18,12 +18,12 @@
 
         <div class="col-md-6">
             <ul class="list-group">
-                <li class="list-group-item">
+                <li data-aos="fade-up" data-aos-delay="700" class="list-group-item">
                     <span class="icon-amenities"
                         ><i class="fas fa-fw fa-certificate" /></span
                     > Sertifikat
                 </li>
-                <li class="list-group-item">
+                <li data-aos="fade-up" data-aos-delay="800" class="list-group-item">
                     <span class="icon-amenities"
                         ><i class="fas fa-fw fa-users" /></span
                     > Teman Baru

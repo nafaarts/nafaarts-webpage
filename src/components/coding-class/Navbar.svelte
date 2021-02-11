@@ -1,6 +1,6 @@
 <div>
     <nav
-        class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top bg-white"
+        class="navbar navbar-expand-lg navbar-light shadow-sm bg-white"
     >
         <button
             class="navbar-toggler"
@@ -25,7 +25,10 @@
     </nav>
 </div>
 
+
+
 <style>
+
     .nav-item {
         margin: 0 15px 0 15px;
     }

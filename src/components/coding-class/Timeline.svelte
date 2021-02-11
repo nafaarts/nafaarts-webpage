@@ -1,9 +1,10 @@
 <div id="timeline">
-    <h1><b>Timeline</b></h1>
+    <h1 data-aos="fade-up" data-aos-delay="400"><b>Timeline</b></h1>
 
     <div class="row">
         <div class="col-md-4">
-            <div class="card-timeline">
+            <div class="card-timeline" data-aos="flip-left"
+            data-aos-delay="500">
                 <div class="indicators">
                     <div class="circle" />
                     <div class="dotted" />
@@ -15,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card-timeline">
+            <div class="card-timeline" data-aos="flip-left" data-aos-delay="600">
                 <div class="indicators">
                     <div class="circle" />
                     <div class="dotted" />
@@ -23,15 +24,15 @@
                 <div class="content-text">
                     <h5>Administrasi</h5>
                     <p class="text-muted">
-                        Melakukan pembayaran sebesar Rp. 30.000.- pada
-                        rekening Bank Aceh (rek saddam) a/n M Saddam Husain, Pembayaran juga dapat dilakukan secara
+                        Melakukan pembayaran sebesar Rp. 50.000.- untuk <b>Umum</b> dan Rp. 30.000.- untuk <b>Pelajar</b> pada
+                        rekening Bank Aceh <b>61002200328440</b>  a/n Yuna Iswara, Pembayaran juga dapat dilakukan secara
                         offline di Politeknik Aceh (konfirmasi: 0813-6702-0213 Yuna Iswara)
                     </p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card-timeline">
+            <div class="card-timeline" data-aos="flip-left" data-aos-delay="700">
                 <div class="indicators">
                     <div class="circle" />
                     <div class="dotted" />
@@ -53,6 +54,10 @@
         font-size: 2rem;
         text-align: center;
         margin-bottom: 50px;
+    }
+
+    b {
+        font-weight: bold !important;
     }
 
     #timeline {

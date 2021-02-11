@@ -1,5 +1,10 @@
 <section id="clients">
     <div class="container">
+        <div class="text-center mb-5" data-aos="fade-down" data-aos-delay="500">
+            <h3><b>Clients</b></h3>
+            <hr style="width: 10%;" />
+            <!-- <p>we will make your Awesome ..</p> -->
+        </div>
         <div class="row">
             <div class="col mb-2 mr-2 ml-2 text-center">
                 <img
@@ -57,7 +62,7 @@
     /* clients */
     #clients {
         height: auto;
-        padding: 20px 0 100px 0;
+        padding: 80px 0 100px 0;
         background: #f2f2f2;
     }
 

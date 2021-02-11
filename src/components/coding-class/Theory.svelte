@@ -36,11 +36,11 @@
 
 <section id="materi" class="materi mt-5">
     <div class="container">
-        <h1>Materi</h1>
+        <h1 data-aos="fade-up" data-aos-delay="400">Materi</h1>
         <div class="row">
             <div class="col-md-6">
                 <div class="accordion" id="accordionExample">
-                    <div class="card">
+                    <div class="card" data-aos="flip-up" data-aos-delay="500">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
                                 <button
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="flip-up" data-aos-delay="700">
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
                                 <button
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="flip-up" data-aos-delay="900">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
                                 <button
@@ -138,6 +138,7 @@
             </div>
             <div class="col-md-6">
                 <img
+                data-aos="zoom-in-left" data-aos-delay="1000"
                     class="img-fluid img-materi"
                     src="./img/class/materi.svg"
                     alt="by Undraw"
@@ -160,7 +161,7 @@
     }
 
     #materi .img-materi {
-        margin: 20px;
+        /* margin: 20px; */
         /* background-color: orange; */
     }
 
@@ -182,8 +183,8 @@
             overflow-x: hidden;
         }
 
-        .materi .card {
-            width: 460px;
+        #materi .img-materi {
+            margin-top: 20px;
         }
     }
 </style>

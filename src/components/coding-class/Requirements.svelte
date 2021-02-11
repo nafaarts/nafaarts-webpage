@@ -12,11 +12,11 @@
 </script>
 
 <div id="requirements">
-    <h1><b>Persyaratan</b></h1>
+    <h1 data-aos="fade-up" data-aos-delay="400"><b>Persyaratan</b></h1>
 
     <ol>
-        {#each requirements as req}
-            <li>{req}</li>
+        {#each requirements as req, i}
+            <li data-aos="fade-right" data-aos-delay={i * 100 + 400}>{req}</li>
         {/each}
     </ol>
 </div>
