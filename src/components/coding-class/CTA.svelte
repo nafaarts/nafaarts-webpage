@@ -8,12 +8,13 @@
         <div class="text-center text-white align-self-center">
             <h1><b>Tertarik ?</b></h1>
             <p>ayo ikuti kelasnya</p>
-            <button class="btn btn-outline-light mt-3 rounded-pill"
-            data-toggle="modal" data-target="#daftar">Daftar Sekarang</button
+            <a
+                href="/registration"
+                class="btn btn-outline-light mt-3 rounded-pill text-light"
+                >Daftar Sekarang</a
             >
         </div>
     </div>
-    <!-- </div> -->
 </section>
 
 <style>

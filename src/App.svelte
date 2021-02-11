@@ -2,11 +2,13 @@
   import router from "page";
   import Home from "./pages/Home.svelte";
   import Class from "./pages/Class.svelte";
+  import Registration from "./pages/Registration.svelte";
 
   let page, params;
 
   router("/", () => (page = Home));
   router("/class", () => (page = Class));
+  router("/registration", () => (page = Registration));
   router("/*", () => (page = Home));
 
   // router(
