@@ -7,6 +7,7 @@
 
   router("/", () => (page = Home));
   router("/class", () => (page = Class));
+  router("/*", () => (page = Home));
 
   // router(
   //   "/about",
