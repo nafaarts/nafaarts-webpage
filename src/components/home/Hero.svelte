@@ -51,7 +51,7 @@
       if (i < text.length) {
         document.querySelector(".text-hero").innerHTML = text.substring(
           0,
-          i + 1
+          i + 1,
         );
 
         setTimeout(function () {
@@ -138,14 +138,13 @@
             >
           </li>
 
-          <li class="nav-item mx-3">
+          <!-- <li class="nav-item mx-3">
             <a
               href="/class"
               class="nav-link rounded-pill bg-warning px-5"
               style="color: #000 !important">Coding Class</a
             >
-          </li>
-
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -156,8 +155,9 @@
       <!-- <button class="btn btn-outline-light mt-3 rounded-pill"
         >let's discuss</button
       > -->
-      <a href="/class" class="btn btn-outline-light mt-3 rounded-pill"
-        >Coding Class Here :)</a
+      <a
+        href="https://n.nafaarts.com/contact"
+        class="btn btn-outline-light mt-3 px-5 rounded-pill">let's discuss</a
       >
     </div>
   </section>
