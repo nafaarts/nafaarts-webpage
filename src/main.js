@@ -1,7 +1,22 @@
-import App from "./App.svelte";
+let dots = ""
+window.setInterval( function() {
+    if ( dots.length > 3 ) 
+        dots = "";
+    else 
+        dots += "."; 
+  
+    document.querySelector('body').innerHTML = "This page is under maintenance, You will be redirect" + dots
+}, 250);
 
-const app = new App({
-  target: document.body,
-});
+window.setTimeout(() => {
+   console.log('Redirected..')
+}, 5000);
 
-export default app;
+//import App from "./App.svelte";
+
+// const app = new App({
+//   target: document.body,
+// });
+
+// export default app;
+
