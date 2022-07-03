@@ -24,9 +24,9 @@
                 <div class="col-md-4 p-4">
                     <h5><b>Lokasi</b></h5>
                     <p>
-                        Jl. Prof. A. Majid Ibrahim, Merduati
+                        Jl. Lampenerut - Mata Ie, Lr. Sukun
                         <br />
-                        Kuta Raja, Banda Aceh
+                        Darul Imarah, Aceh Besar
                         <br />
                         Aceh 23242
                     </p>
