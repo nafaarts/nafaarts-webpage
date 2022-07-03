@@ -3,9 +3,10 @@
   import * as AOS from "aos";
 
   AOS.init({
+    once: true,
     // offset: 200,
     // duration: 600,
-    // easing: "ease-in-sine",
+    easing: "ease-in-sine",
     // delay: 100,
   });
 
