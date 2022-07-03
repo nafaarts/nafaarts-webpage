@@ -56,7 +56,7 @@
                         <a class="mr-2" href="/">Privacy Policy</a>
                         <a href="/">Term & Conditions</a>
                     </p>
-                    <p class="m-0">Copyright &copy; Nafaarts | 2018 - 2021</p>
+                    <p class="m-0">Copyright &copy; Nafaarts | 2018 - 2022</p>
                 </div>
             </div>
         </div>
