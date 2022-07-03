@@ -17,7 +17,7 @@
 <!-- <Testimonial /> -->
 <Clients />
 <!-- <Team /> -->
-<Contact />
+<!-- <Contact /> -->
 <Footer />
 
 <!-- <h5 class="text-center m-3">~ on progress ~</h5> -->
