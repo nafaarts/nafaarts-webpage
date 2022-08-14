@@ -15,7 +15,7 @@
 <Services />
 <Banner />
 <!-- <Testimonial /> -->
-<!-- <Clients /> -->
+<Clients />
 <!-- <Team /> -->
 <!-- <Contact /> -->
 <Footer />
