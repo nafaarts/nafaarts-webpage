@@ -158,7 +158,7 @@
       > -->
       <a
         href="https://n.nafaarts.com/contact"
-        class="btn btn-outline-light mt-3 px-5 rounded-pill">let's discuss</a
+        class="btn btn-outline-light mt-3 px-5 rounded-pill">Contact Us</a
       >
     </div>
   </section>
