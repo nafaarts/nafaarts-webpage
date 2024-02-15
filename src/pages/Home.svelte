@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import Hero from "../components/home/Hero.svelte";
   import About from "../components/home/About.svelte";
   import Services from "../components/home/Services.svelte";
@@ -14,10 +14,11 @@
 <About />
 <Services />
 <Banner />
-<!-- <Testimonial /> -->
+<Testimonial />
 <Clients />
-<!-- <Team /> -->
-<!-- <Contact /> -->
-<Footer />
+<Team />
+<!-- <Contact />
+<Footer /> -->
 
-<!-- <h5 class="text-center m-3">~ on progress ~</h5> -->
+<h3 class="text-center m-3">เราจะกลับมา!</h3>
+<h5 class="text-center m-3">~ under maintenance ~</h5>
