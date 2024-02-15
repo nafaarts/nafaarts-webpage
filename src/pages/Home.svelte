@@ -20,9 +20,9 @@
 <!-- <Contact />
 <Footer /> -->
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100dvh">
-<div class="text-center">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100dvh">
+
 <h3>เราจะกลับมา!</h3>
 <p>~ under maintenance ~</p>
-</div>
+
 </div>
