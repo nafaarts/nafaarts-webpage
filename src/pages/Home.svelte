@@ -20,9 +20,10 @@
 <!-- <Contact />
 <Footer /> -->
 
-<div style="display: flex; flex-direction: row; justify-content: center; align-items: center; height: 100dvh">
-
-<h3>เราจะกลับมา!</h3>
-<p>~ under maintenance ~</p>
-
+<div style="display: flex; justify-content: center; align-items: center; height: 100dvh;">
+  <div style="text-align: center">
+    <h1 style="color: orange">เราจะกลับมา!</h1> 
+    <p style="color: grey; margin-bottom: 70px">~ under maintenance ~</p>
+    <small style="color: grey">email: <a style="color: orange" target="_blank" href="mailto:contact@nafaarts.com">contact@nafaarts.com</a></small>
+   </div>
 </div>
