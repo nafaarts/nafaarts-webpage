@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "@fontsource/poppins";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+  --font-sans: var(--font-poppins);
+
+  /* Custom Color Override */
+  --color-orange-500: #F7941E;
+
+  /* Reset all border radius to 0px */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-full: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
