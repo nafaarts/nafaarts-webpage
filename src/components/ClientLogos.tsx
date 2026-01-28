@@ -14,9 +14,10 @@ export default function ClientLogos() {
     return (
         <section className="py-12 border-y border-gray-50 bg-gray-50/50">
             <div className="container mx-auto px-4 md:px-8 text-center">
-                <p className="text-gray-500 font-medium mb-12">Dipercaya oleh berbagai sekolah, organisasi dan perusahaan</p>
+                <p className="text-xs md:text-base text-gray-500 font-medium mb-12">Dipercaya oleh berbagai sekolah, organisasi dan perusahaan</p>
 
-                <div className="flex flex-wrap justify-center items-center gap-4 md:gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                {/* Desktop View (Grid) */}
+                <div className="hidden md:flex flex-wrap justify-center items-center gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
                     {clients.map((client, index) => (
                         <div
                             key={index}
@@ -30,6 +31,32 @@ export default function ClientLogos() {
                             />
                         </div>
                     ))}
+                </div>
+
+                {/* Mobile View (Infinite Scroll Marquee) */}
+                <div className="md:hidden relative overflow-hidden w-full grayscale hover:grayscale-0">
+                    {/* Gradient Overlay Left */}
+                    <div className="absolute top-0 left-0 z-10 w-20 h-full bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent"></div>
+
+                    {/* Gradient Overlay Right */}
+                    <div className="absolute top-0 right-0 z-10 w-20 h-full bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent"></div>
+
+                    <div className="flex w-max animate-scroll gap-8 opacity-70">
+                        {/* Original + Duplicate for seamless loop */}
+                        {[...clients, ...clients].map((client, index) => (
+                            <div
+                                key={index}
+                                className="h-10 flex-shrink-0 flex items-center justify-center"
+                            >
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
+                                    className="h-full w-auto object-contain max-w-[120px]"
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -8,7 +8,7 @@ export default function Navbar() {
           to="/"
           className="text-2xl font-bold text-orange-500 font-poppins"
         >
-          <img src="/images/logo.png" alt="Nafaarts" className="h-[25px]" />
+          <img src="/images/logo.png" alt="Nafaarts" className="h-[20px] md:h-[25px]" />
         </Link>
 
         <div className="flex items-center gap-8">

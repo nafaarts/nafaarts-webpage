@@ -5,11 +5,11 @@ export default function HeroSection() {
         {/* Left Content */}
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="space-y-6 mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 font-poppins">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight text-gray-900 font-poppins">
               Wujudkan <span className="text-orange-500">Sekolah Digital</span>{' '}
               dalam satu klik
             </h1>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
+            <p className="text-xs md:text-base text-gray-600 leading-relaxed max-w-xl">
               Tinggalkan proses manual. Hadirkan solusi digital yang cepat, stabil, dan efesien
               untuk kebutuhan operasional anda.
             </p>
