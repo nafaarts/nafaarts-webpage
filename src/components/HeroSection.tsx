@@ -31,7 +31,11 @@ export default function HeroSection() {
             <img
               src="/images/hero.png"
               alt="Ilustrasi Sekolah Digital"
+              width={600}
+              height={400}
               className="w-full h-auto object-cover"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
 

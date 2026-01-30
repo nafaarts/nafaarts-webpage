@@ -14,7 +14,7 @@ export default function ClientLogos() {
     return (
         <section className="py-12 border-y border-gray-50 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 transition-colors duration-300">
             <div className="container mx-auto px-4 md:px-8 text-center">
-                <p className="text-xs md:text-base text-gray-500 dark:text-gray-400 font-medium mb-12">Dipercaya oleh berbagai sekolah, organisasi dan perusahaan</p>
+                <h2 className="text-xs md:text-base text-gray-500 dark:text-gray-400 font-medium mb-12">Dipercaya oleh berbagai sekolah, organisasi dan perusahaan</h2>
 
                 {/* Desktop View (Grid) */}
                 <div className="hidden md:flex flex-wrap justify-center items-center gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">

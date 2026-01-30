@@ -12,8 +12,8 @@ export const Route = createRootRoute({
       <p className="text-gray-600 dark:text-gray-400 mb-8 text-center max-w-md">
         Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
       </p>
-      <a 
-        href="/" 
+      <a
+        href="/"
         className="px-8 py-3 bg-orange-500 text-white rounded-full font-medium hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-500/20"
       >
         Kembali ke Beranda
@@ -30,13 +30,47 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Nafaarts - Sekolah Digital',
+        title: 'Nafaarts',
+      },
+      {
+        property: 'og:site_name',
+        content: 'Nafaarts',
+      },
+      {
+        property: 'og:locale',
+        content: 'id_ID',
       },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: 'icon',
+        href: '/favicon.ico',
+      },
+      {
+        rel: 'canonical',
+        href: 'https://nafaarts.com',
+      },
+    ],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'Nafaarts',
+          url: 'https://nafaarts.com',
+          logo: 'https://nafaarts.com/images/logo.png',
+          description: 'Solusi Sekolah Digital & Konsultan IT Terpercaya',
+          contactPoint: {
+            '@type': 'ContactPoint',
+            telephone: '+62-812-3456-7890',
+            contactType: 'customer service',
+          },
+        }),
       },
     ],
   }),

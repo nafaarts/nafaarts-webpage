@@ -21,7 +21,7 @@ export default function ContactSection() {
                   <Mail className="w-3 h-3 md:w-5 md:h-5 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div className="text-xs md:text-base">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Email</h4>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Email</h3>
                   <p className="text-gray-600 dark:text-gray-400">info[at]nafaarts.com</p>
                 </div>
               </div>
@@ -31,7 +31,7 @@ export default function ContactSection() {
                   <Phone className="w-3 h-3 md:w-5 md:h-5 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div className="text-xs md:text-base">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">WhatsApp</h4>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
                   <p className="text-gray-600 dark:text-gray-400">+62 812-3456-7890</p>
                 </div>
               </div>
