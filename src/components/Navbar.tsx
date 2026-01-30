@@ -13,7 +13,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-8">
           <a href="#products" className="text-gray-600 hover:text-orange-500 font-medium transition-colors cursor-pointer hidden md:block">
-            Produk Digital
+            Katalog Produk
           </a>
           <a href="#contact" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg">
             Book Demo
