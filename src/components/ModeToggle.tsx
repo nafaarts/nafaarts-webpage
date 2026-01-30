@@ -1,12 +1,12 @@
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "./ThemeProvider"
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from './ThemeProvider'
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme()
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label="Toggle theme"
     >

@@ -17,11 +17,13 @@ export const Route = createFileRoute('/')({
       },
       {
         name: 'description',
-        content: 'Wujudkan sekolah digital dalam satu klik bersama Nafaarts. Layanan konsultan IT terpercaya untuk transformasi digital pendidikan dan bisnis Anda.',
+        content:
+          'Wujudkan sekolah digital dalam satu klik bersama Nafaarts. Layanan konsultan IT terpercaya untuk transformasi digital pendidikan dan bisnis Anda.',
       },
       {
         name: 'keywords',
-        content: 'sekolah digital, konsultan IT, aplikasi sekolah, website sekolah, nafaarts, transformasi digital, sistem informasi sekolah',
+        content:
+          'sekolah digital, konsultan IT, aplikasi sekolah, website sekolah, nafaarts, transformasi digital, sistem informasi sekolah',
       },
       // Open Graph
       {
@@ -30,7 +32,8 @@ export const Route = createFileRoute('/')({
       },
       {
         property: 'og:description',
-        content: 'Wujudkan sekolah digital dalam satu klik bersama Nafaarts. Solusi digital terpercaya untuk pendidikan.',
+        content:
+          'Wujudkan sekolah digital dalam satu klik bersama Nafaarts. Solusi digital terpercaya untuk pendidikan.',
       },
       {
         property: 'og:type',

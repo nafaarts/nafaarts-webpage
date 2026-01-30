@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 
 export default function ScrollToTop() {
@@ -30,7 +30,9 @@ export default function ScrollToTop() {
     <button
       onClick={scrollToTop}
       className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-orange-500 text-white shadow-lg transition-all duration-300 transform hover:bg-orange-600 hover:shadow-orange-500/30 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+        isVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-10 pointer-events-none'
       }`}
       aria-label="Scroll to top"
     >
