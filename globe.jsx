@@ -7,8 +7,8 @@ function latLonToVec3(lat, lon, radius) {
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lon + 180) * Math.PI / 180;
   const x = -radius * Math.sin(phi) * Math.cos(theta);
-  const z =  radius * Math.sin(phi) * Math.sin(theta);
-  const y =  radius * Math.cos(phi);
+  const z = radius * Math.sin(phi) * Math.sin(theta);
+  const y = radius * Math.cos(phi);
   return new THREE.Vector3(x, y, z);
 }
 
@@ -244,8 +244,8 @@ function Globe({ style = "earth", accent = "#f8941f", onLabel }) {
         if (autoRotateTimer > 240) autoRotate = true;
       }
 
-    // Slower pulse — calmer feel
-    pulseT += 0.0045;
+      // Slower pulse — calmer feel
+      pulseT += 0.0045;
       const p1 = (pulseT % 1);
       const p2 = ((pulseT + 0.5) % 1);
       ring1.scale.setScalar(1 + p1 * 3.5);

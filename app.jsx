@@ -335,7 +335,7 @@ function FloatingGlobe() {
     const BASE = 1200;
     // Cache DOM lookups — querying every RAF frame is expensive
     const servicesEl = document.querySelector("#services");
-    const processEl  = document.querySelector("#process");
+    const processEl = document.querySelector("#process");
     const update = () => {
       const el = wrapRef.current;
       if (!el) return;
@@ -355,58 +355,68 @@ function FloatingGlobe() {
       const scrollMax = Math.max(1, docH - winH);
       const isMobile = winW <= 860;
 
-      // Size anchors
-      const initSize = isMobile
-        ? Math.min(winW * 0.82, winH * 0.55)          // full circle, fits mobile
-        : Math.min(winH * 1.4, winW * 1.1, 1280);
-      const svcSize  = isMobile ? initSize * 0.85 : initSize * 0.8;
-      const midSize  = isMobile ? Math.min(winW * 0.9, winH * 0.6) : 1147;
-      const endSize  = winW;
-
-      // Position anchors — mobile: centered; desktop: arc-style off-screen
-      const initLeft = isMobile ? (winW - initSize) / 2 : winW - initSize * 0.72;
-      const initTop  = (winH - initSize) / 2;
-      const svcLeft  = isMobile ? (winW - svcSize) / 2  : -(svcSize * 0.28);
-      const svcTop   = (winH - svcSize) / 2;
-      const midLeft  = isMobile ? (winW - midSize) / 2  : winW - midSize * 0.85;
-      const midTop   = isMobile ? (winH - midSize) / 2  : winH - midSize + 50;
-      const endLeft  = (winW - endSize) / 2;
-      const endTop   = winH - endSize * 0.5;
-
-      // Scroll phase boundaries
-      const phase1End  = servicesEl ? Math.max(1, servicesEl.offsetTop) : scrollMax * 0.25;
-      const phase2End  = processEl  ? Math.max(1, processEl.offsetTop)  : scrollMax * 0.6;
-
       let size, left, top;
-      if (scrollY <= phase1End) {
-        const raw = Math.max(0, Math.min(1, scrollY / phase1End));
-        const p   = raw * raw * (3 - 2 * raw);
-        size = initSize + (svcSize - initSize) * p;
-        left = initLeft + (svcLeft - initLeft) * p;
-        top  = initTop  + (svcTop  - initTop)  * p;
-      } else if (scrollY <= phase2End) {
-        const raw = Math.max(0, Math.min(1, (scrollY - phase1End) / Math.max(1, phase2End - phase1End)));
-        const p   = raw * raw * (3 - 2 * raw);
-        size = svcSize + (midSize - svcSize) * p;
-        left = svcLeft + (midLeft - svcLeft) * p;
-        top  = svcTop  + (midTop  - svcTop)  * p;
+
+      if (isMobile) {
+        // Three.js sphere fills ~74% of the canvas.
+        // Target sphere diameter = 88% of viewport (5% padding each side → fully visible).
+        // Canvas is larger (sphere/0.74), its transparent edges get viewport-clipped — ok.
+        // Sphere target = 88% of viewport width (6% padding each side, fully visible).
+        // Canvas = sphereDia / 0.74. Transparent canvas edges get viewport-clipped harmlessly.
+        const sphereDia = winW * 0.88;
+        size = sphereDia / 0.74;
+        left = (winW - size) / 2;  // negative — transparent areas outside viewport
+        top  = winH - size / 2;    // sphere center at viewport bottom → top half visible
       } else {
-        const raw = Math.max(0, Math.min(1, (scrollY - phase2End) / Math.max(1, scrollMax - phase2End)));
-        const p   = raw * raw * (3 - 2 * raw);
-        size = midSize + (endSize - midSize) * p;
-        left = midLeft + (endLeft - midLeft) * p;
-        top  = midTop  + (endTop  - midTop)  * p;
+        // Desktop size anchors
+        const initSize = Math.min(winH * 1.4, winW * 1.1, 1280);
+        const svcSize  = initSize * 0.8;
+        const midSize  = 1147;
+        const endSize  = winW;
+
+        // Desktop position anchors
+        const initLeft = winW - initSize * 0.72;
+        const initTop  = (winH - initSize) / 2;
+        const svcLeft  = -(svcSize * 0.28);
+        const svcTop   = (winH - svcSize) / 2;
+        const midLeft  = winW - midSize * 0.85;
+        const midTop   = winH - midSize + 50;
+        const endLeft  = (winW - endSize) / 2;
+        const endTop   = winH - endSize * 0.5;
+
+        const phase1End = servicesEl ? Math.max(1, servicesEl.offsetTop) : scrollMax * 0.25;
+        const phase2End = processEl  ? Math.max(1, processEl.offsetTop)  : scrollMax * 0.6;
+
+        if (scrollY <= phase1End) {
+          const raw = Math.max(0, Math.min(1, scrollY / phase1End));
+          const p   = raw * raw * (3 - 2 * raw);
+          size = initSize + (svcSize - initSize) * p;
+          left = initLeft + (svcLeft - initLeft) * p;
+          top  = initTop  + (svcTop  - initTop)  * p;
+        } else if (scrollY <= phase2End) {
+          const raw = Math.max(0, Math.min(1, (scrollY - phase1End) / Math.max(1, phase2End - phase1End)));
+          const p   = raw * raw * (3 - 2 * raw);
+          size = svcSize + (midSize - svcSize) * p;
+          left = svcLeft + (midLeft - svcLeft) * p;
+          top  = svcTop  + (midTop  - svcTop)  * p;
+        } else {
+          const raw = Math.max(0, Math.min(1, (scrollY - phase2End) / Math.max(1, scrollMax - phase2End)));
+          const p   = raw * raw * (3 - 2 * raw);
+          size = midSize + (endSize - midSize) * p;
+          left = midLeft + (endLeft - midLeft) * p;
+          top  = midTop  + (endTop  - midTop)  * p;
+        }
       }
 
       const boostedScale = size / BASE;
 
-      // Down-shift at Process section (desktop only — mobile globe already centered)
+      // Down-shift at Process section (desktop only)
       let sectionDownOffset = 0;
       if (!isMobile && processEl) {
         const pTop = processEl.offsetTop;
-        const pH   = processEl.offsetHeight;
-        const rel  = (scrollY - pTop + winH * 0.3) / (pH * 0.8);
-        const t    = Math.max(0, Math.min(1, rel));
+        const pH = processEl.offsetHeight;
+        const rel = (scrollY - pTop + winH * 0.3) / (pH * 0.8);
+        const t = Math.max(0, Math.min(1, rel));
         sectionDownOffset = winH * 0.468 * Math.sin(t * Math.PI);
       }
 
@@ -592,6 +602,34 @@ function CTAStrip() {
 
 }
 
+function BigLogo() {
+  return (
+    <svg
+      className="big-logo"
+      viewBox="0 0 1000 190"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <text
+        x="0"
+        y="168"
+        fontFamily="'Montserrat', ui-sans-serif, sans-serif"
+        fontWeight="700"
+        fontSize="190"
+        fill="none"
+        stroke="var(--line)"
+        strokeWidth="1"
+        vectorEffect="non-scaling-stroke"
+        textLength="1000"
+        lengthAdjust="spacingAndGlyphs"
+      >
+        Nafaarts
+      </text>
+    </svg>
+  );
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -604,7 +642,7 @@ function Footer() {
             </div>
             <p className="footer-address">
               Banda Aceh, 23116<br />
-              Aceh · Indonesia
+              Nanggroe Aceh Darussalam · Indonesia
             </p>
           </div>
           <div>
@@ -621,16 +659,12 @@ function Footer() {
               <li><a href="#">@nafaarts</a></li>
             </ul>
           </div>
-          <div>
-            <h5>Office hours</h5>
-            <ul>
-              <li>Mon — Fri</li>
-              <li>09:00 — 18:00 WIB</li>
-              <li style={{ color: "var(--accent)" }}>UTC+7</li>
-            </ul>
-          </div>
         </div>
-        <div className="big-logo">Nafaarts</div>
+      </div>
+      <div className="container">
+        <BigLogo />
+      </div>
+      <div className="container" style={{ marginBottom: 20 }}>
         <div className="footer-bottom">
           <span>© 2026 Nafaarts Development</span>
           <a href="https://www.nafaarts.com" target="_blank" rel="noopener">www.nafaarts.com</a>

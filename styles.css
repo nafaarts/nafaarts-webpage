@@ -38,7 +38,7 @@ html, body {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   background:
     radial-gradient(1200px 700px at 78% -10%, oklch(0.32 0.06 70 / 0.45), transparent 60%),
     radial-gradient(900px 600px at -10% 90%, oklch(0.26 0.04 250 / 0.35), transparent 60%),
@@ -80,9 +80,9 @@ button { font-family: inherit; cursor: pointer; }
   gap: 12px;
 }
 .brand-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  width: 31px;
+  height: 31px;
+  border-radius: 7px;
   display: block;
   box-shadow: 0 8px 24px -12px var(--accent);
 }
@@ -90,7 +90,8 @@ button { font-family: inherit; cursor: pointer; }
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.005em;
-  font-size: 19px;
+  font-size: 25px;
+  line-height: 1;
   color: var(--ink);
 }
 .brand-dot { color: var(--accent); }
@@ -699,17 +700,18 @@ h1.headline em {
 
 /* === FOOTER === */
 .footer {
-  padding: 80px 0 40px;
+  padding: 80px 0 0;
   position: relative;
   z-index: 1;
   background: color-mix(in oklab, var(--bg) 92%, transparent);
+  overflow: hidden;
 }
 .footer > .container {
   width: 100%;
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 56px;
   border-bottom: 1px solid var(--line-soft);
@@ -746,24 +748,13 @@ h1.headline em {
 
 /* Big logotype at bottom */
 .big-logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 19.5vw;
-  letter-spacing: -0.045em;
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line);
-  text-align: left;
-  margin: 60px 0 40px;
+  display: block;
+  width: 100%;
+  margin: 40px 0 0;
   user-select: none;
   position: relative;
   z-index: 2;
-  white-space: nowrap;
-  width: 100%;
-}
-.big-logo .dot {
-  color: var(--accent);
-  -webkit-text-stroke: 0;
+  overflow: visible;
 }
 
 /* === FLOATING SCROLL CONTROL === */
@@ -814,6 +805,7 @@ h1.headline em {
   .work { grid-template-columns: 1fr; }
   .section-head { grid-template-columns: 1fr; gap: 24px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
   .cta-inner { grid-template-columns: 1fr; }
   .nav-links { display: none; }
   .footer-bottom {
