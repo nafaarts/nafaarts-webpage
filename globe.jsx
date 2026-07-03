@@ -62,6 +62,36 @@ function Globe({ style = "earth", accent = "#f8941f", onLabel }) {
     const mount = mountRef.current;
     if (!mount) return;
 
+    // Defer scene setup until the browser is idle — keeps Three.js off the
+    // critical path (FCP/LCP/TTI). three.min.js is injected here, not in
+    // index.html, so its 650KB never competes with first paint.
+    let disposed = false;
+    let teardown = null;
+    const start = () => {
+      if (disposed) return;
+      if (!window.THREE) {
+        let s = document.getElementById("three-lib");
+        if (!s) {
+          s = document.createElement("script");
+          s.id = "three-lib";
+          s.src = "vendor/three.min.js";
+          document.head.appendChild(s);
+        }
+        s.addEventListener("load", () => {
+          if (!disposed && window.THREE) teardown = init();
+        }, { once: true });
+        return;
+      }
+      teardown = init();
+    };
+    // Strictly after the load event so the download is never part of the
+    // initial critical path, then a beat later at idle.
+    let kickId = 0;
+    const kick = () => { kickId = setTimeout(start, 400); };
+    if (document.readyState === "complete") kick();
+    else window.addEventListener("load", kick, { once: true });
+
+    function init() {
     const W = mount.clientWidth;
     const H = mount.clientHeight;
 
@@ -222,8 +252,14 @@ function Globe({ style = "earth", accent = "#f8941f", onLabel }) {
     let lastH = H;
     const tmpVec = new THREE.Vector3();
 
+    const wrapEl = mount.closest(".floating-globe");
+
     const animate = () => {
       frameId = requestAnimationFrame(animate);
+
+      // FloatingGlobe hides the wrapper when the globe is fully covered by
+      // page content (mobile, past hero) — skip rendering while hidden.
+      if (wrapEl && wrapEl.style.visibility === "hidden") return;
 
       // Poll size for resize (more reliable than ResizeObserver in some webviews)
       const cw = mount.clientWidth;
@@ -303,6 +339,14 @@ function Globe({ style = "earth", accent = "#f8941f", onLabel }) {
       wireMat.dispose();
       haloGeo.dispose();
       haloMat.dispose();
+    };
+    }
+
+    return () => {
+      disposed = true;
+      window.removeEventListener("load", kick);
+      clearTimeout(kickId);
+      if (teardown) teardown();
     };
   }, []);
 

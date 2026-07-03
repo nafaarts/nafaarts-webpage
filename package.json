@@ -1,0 +1,14 @@
+{
+  "name": "nafaarts-landing",
+  "private": true,
+  "description": "Nafaarts Development landing page. Edit the .jsx sources, then `npm run build` (or keep `npm run watch` running) to regenerate js/.",
+  "scripts": {
+    "build": "babel app.jsx globe.jsx --out-dir js --presets=@babel/preset-react --minified --no-comments --source-maps",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.0",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-react": "^7.27.0"
+  }
+}

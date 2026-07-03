@@ -48,6 +48,7 @@ const Icon = {
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => {
       const hero = document.querySelector(".hero");
@@ -58,11 +59,12 @@ function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  const close = () => setOpen(false);
   return (
-    <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
+    <nav className={`nav ${scrolled || open ? "scrolled" : ""}`}>
       <div className="container nav-inner">
         <a href="#" className="brand">
-          <img src="assets/nafaarts-logo.png" alt="" className="brand-mark" />
+          <img src="assets/nafaarts-logo.png" alt="" width="31" height="31" className="brand-mark" />
           <div className="brand-name">Nafaarts</div>
         </a>
         <div className="nav-links">
@@ -73,7 +75,36 @@ function Nav() {
         <a href="#contact" className="nav-cta">
           Start a project
         </a>
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            {open ? (
+              <>
+                <path d="M6 6l12 12" />
+                <path d="M18 6L6 18" />
+              </>
+            ) : (
+              <>
+                <path d="M4 7h16" />
+                <path d="M4 12h16" />
+                <path d="M4 17h16" />
+              </>
+            )}
+          </svg>
+        </button>
       </div>
+      {open &&
+        <div className="nav-menu">
+          <a href="#services" onClick={close}>Services</a>
+          <a href="#process" onClick={close}>Process</a>
+          <a href="#contact" onClick={close}>Contact</a>
+          <a href="#contact" onClick={close}>Start a project →</a>
+        </div>}
     </nav>);
 
 }
@@ -84,6 +115,7 @@ function Nav() {
 // Footer behave normally.
 function SnapScroller() {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const getTargets = () => [
       document.querySelector(".hero"),
       document.querySelector("#services"),
@@ -215,6 +247,10 @@ function ScrollControl() {
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
   const animateScroll = (y, dur = 1100) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo(0, y);
+      return;
+    }
     const startY = window.scrollY;
     const dy = y - startY;
     const t0 = performance.now();
@@ -299,7 +335,7 @@ function Hero() {
             </div>
             <div className="sep"></div>
             <div className="stat">
-              <span className="stat-num">08</span>
+              <span className="stat-num">{String(new Date().getFullYear() - 2018).padStart(2, "0")}</span>
               <span>Years · since 2018</span>
             </div>
           </div>
@@ -311,21 +347,9 @@ function Hero() {
 }
 
 function FloatingGlobe() {
-  const [globeStyle, setGlobeStyle] = useState("earth");
-  const [accent, setAccent] = useState("#f8941f");
   const [label, setLabel] = useState({ x: 0, y: 0, visible: false });
   const wrapRef = useRef(null);
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.detail) {
-        if (e.detail.globeStyle) setGlobeStyle(e.detail.globeStyle);
-        if (e.detail.accent) setAccent(e.detail.accent);
-      }
-    };
-    window.addEventListener("__nafaarts_tweak", handler);
-    return () => window.removeEventListener("__nafaarts_tweak", handler);
-  }, []);
+  const hiddenRef = useRef(false);
 
   useEffect(() => {
     let rafId = 0;
@@ -336,6 +360,8 @@ function FloatingGlobe() {
     // Cache DOM lookups — querying every RAF frame is expensive
     const servicesEl = document.querySelector("#services");
     const processEl = document.querySelector("#process");
+    const heroEl = document.querySelector(".hero");
+    const metaEl = document.querySelector(".hero .meta-row");
     const update = () => {
       const el = wrapRef.current;
       if (!el) return;
@@ -367,7 +393,31 @@ function FloatingGlobe() {
         size = sphereDia / 0.74;
         left = (winW - size) / 2;  // negative — transparent areas outside viewport
         top  = winH - size / 2;    // sphere center at viewport bottom → top half visible
+
+        // Short viewports (mobile browser chrome eats ~100px): keep the sphere's
+        // top edge below the hero stats row instead of cutting through it.
+        if (metaEl) {
+          const metaBottom = metaEl.getBoundingClientRect().bottom;
+          const canvasEdge = size * 0.13; // transparent margin around the sphere
+          if (top + canvasEdge < metaBottom + 16) {
+            top = metaBottom + 16 - canvasEdge;
+          }
+        }
+
+        // Past the hero the globe is fully covered by content — hide it so the
+        // Three.js render loop can pause (battery/GPU).
+        const heroBottom = heroEl ? heroEl.offsetTop + heroEl.offsetHeight : winH;
+        const hide = scrollY > heroBottom;
+        if (hide !== hiddenRef.current) {
+          hiddenRef.current = hide;
+          el.style.visibility = hide ? "hidden" : "visible";
+          if (hide) setLabel((l) => (l.visible ? { ...l, visible: false } : l));
+        }
       } else {
+        if (hiddenRef.current) {
+          hiddenRef.current = false;
+          el.style.visibility = "visible";
+        }
         // Desktop size anchors
         const initSize = Math.min(winH * 1.4, winW * 1.1, 1280);
         const svcSize  = initSize * 0.8;
@@ -432,13 +482,14 @@ function FloatingGlobe() {
   return (
     <>
       <div ref={wrapRef} className="floating-globe">
-        <Globe style={globeStyle} accent={accent} onLabel={setLabel} />
+        <Globe onLabel={setLabel} />
       </div>
       <div
         className="pin-label"
         style={{
-          left: label.x + "px",
-          top: label.y + "px",
+          // Clamp so the label never renders off-screen on narrow viewports
+          left: Math.min(Math.max(label.x, 100), window.innerWidth - 100) + "px",
+          top: Math.max(label.y, 60) + "px",
           opacity: label.visible ? 1 : 0,
         }}
       >
@@ -575,7 +626,7 @@ function Process() {
               onMouseEnter={() => setActive(i)}>
 
               <div className="step-num">{s.n} ──</div>
-              <h4>{s.title}</h4>
+              <h3>{s.title}</h3>
               <p>{s.desc}</p>
             </div>
           )}
@@ -595,6 +646,9 @@ function CTAStrip() {
         <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 280 }}>
           <a href="mailto:nafaarts.dev@gmail.com" className="btn btn-primary" style={{ justifyContent: "space-between" }}>
             nafaarts.dev@gmail.com <Icon.arrow />
+          </a>
+          <a href="https://wa.me/62819854144" target="_blank" rel="noopener" className="btn btn-ghost" style={{ justifyContent: "space-between" }}>
+            Chat on WhatsApp <Icon.arrowOut />
           </a>
         </div>
       </div>
@@ -646,17 +700,17 @@ function Footer() {
             </p>
           </div>
           <div>
-            <h5>Studio</h5>
+            <h3>Studio</h3>
             <ul>
               <li><a href="#services">Services</a></li>
               <li><a href="#process">Process</a></li>
             </ul>
           </div>
           <div>
-            <h5>Contact</h5>
+            <h3>Contact</h3>
             <ul>
               <li><a href="mailto:nafaarts.dev@gmail.com">nafaarts.dev@gmail.com</a></li>
-              <li><a href="#">@nafaarts</a></li>
+              <li><a href="https://wa.me/62819854144" target="_blank" rel="noopener">WhatsApp · +62 819 854 144</a></li>
             </ul>
           </div>
         </div>
@@ -674,51 +728,20 @@ function Footer() {
 
 }
 
-function TweaksLayer() {
-  if (typeof TweaksPanel === "undefined") return null;
-  const [t, setTweak] = useTweaks(window.__NAFAARTS_TWEAKS__);
-
-  // Broadcast tweaks to children
-  useEffect(() => {
-    window.dispatchEvent(new CustomEvent("__nafaarts_tweak", { detail: t }));
-  }, [t.accent, t.globeStyle]);
-
-  // Apply accent to CSS
-  useEffect(() => {
-    document.documentElement.style.setProperty("--accent", t.accent);
-    document.documentElement.style.setProperty(
-      "--accent-soft",
-      t.accent + "24"
-    );
-  }, [t.accent]);
-
-  return (
-    <TweaksPanel>
-      <TweakSection label="Brand accent">
-        <TweakColor
-          label="Accent"
-          value={t.accent}
-          onChange={(v) => setTweak("accent", v)}
-          options={["#f8941f", "#e8b558", "#7dd6c6", "#9ab8ff", "#e07a5f"]} />
-
-      </TweakSection>
-    </TweaksPanel>);
-
-}
-
 function App() {
   return (
     <>
       <Nav />
-      <Hero />
-      <Services />
-      <Process />
-      <CTAStrip />
+      <main>
+        <Hero />
+        <Services />
+        <Process />
+        <CTAStrip />
+      </main>
       <Footer />
       <FloatingGlobe />
       <SnapScroller />
       <ScrollControl />
-      <TweaksLayer />
     </>);
 
 }
